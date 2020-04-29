@@ -5,22 +5,20 @@ import { getSingleObject } from "../utils/index.js";
 export default function AllPhotos({ photos }) {
   const photoBoxRef = useRef();
 
-  function displayPhotos() {
-    photos.forEach(async photo => {
-      const data = await getSingleObject(photo.Key);
-      const result = `data:image/jpg;base64,${data}`;
-      const element = <img src={result}></img>;
-      // photoBoxRef.appendChild(<img src={result}></img>)
+  async function getImages() {
+    let images = [];
+    for (let i = 0; i < 6; i++) {
+      if (photos) {
+        const data = await getSingleObject(photos[i].Key);
+        const result = `data:image/jpg;base64,${data}`;
 
-      // ReacdDom.render(result)
-    });
+        images.push(result);
+      }
+    }
+    return images;
   }
 
-  //   const Example = ({ data }) => <img src={`data:image/jpeg;base64,${data}`} />
-
-  // ReactDOM.render(<Example data={data} />, document.getElementById('container'))
-
-  displayPhotos();
+  // displayPhotos();
 
   return <div ref={photoBoxRef} className="photoContainer"></div>;
 }
