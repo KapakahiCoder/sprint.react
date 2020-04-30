@@ -4,7 +4,7 @@ import { getSingleObject } from "../utils/index.js";
 import "../styles/allphotos.css";
 
 export default function AllPhotos(props) {
-  console.log("props:", props.photos);
+  console.log("props:", props);
 
   return (
     <div className="all-photos">
@@ -12,7 +12,10 @@ export default function AllPhotos(props) {
         <img
           src={"data:image/jpeg;base64, " + string}
           key={index}
-          onClick={() => {}}
+          onClick={() => {
+            console.log(index, string);
+            props.sendIndex(index, string);
+          }}
         />
       ))}
     </div>
