@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/styles.css";
 import Navbar from "./Navbar.jsx";
 import AllPhotos from "./AllPhotos.jsx";
@@ -17,22 +17,24 @@ export default function App() {
     setCurrentView(view);
   }
 
-  //use effect with this function as callback before any component mounting
   async function getImages() {
-    let images = [];
-    const list = await listObjects();
-
-    for (let i = 0; i < 6; i++) {
-      if (list[i]) {
-        const data = await getSingleObject(list[i].Key);
-        const result = `data:image/jpg;base64,${data}`;
-
-        images.push(result);
-      }
-    }
-    setPhotos(images);
+    let list = await listObjects();
+    const base64Array = list.map(obj => {
+      const key = obj.Key;
+      return getSingleObject(key);
+    });
+    Promise.all(base64Array).then(item => {
+      setPhotos(item);
+    });
   }
-  getImages();
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
+  function getPhotos() {
+    return photos;
+  }
 
   return (
     <div className="app">

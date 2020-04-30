@@ -5,7 +5,6 @@ import App from "./App.jsx";
 import Upload from "./Upload.jsx";
 
 export default function Navbar({ updateCurrentView }) {
-  // console.log(props)
   return (
     <div className="navbar">
       <h1
@@ -13,7 +12,7 @@ export default function Navbar({ updateCurrentView }) {
           updateCurrentView("AllPhotos");
         }}
       >
-        Photo Upload App
+        CCgram
       </h1>
       <Upload />
     </div>
