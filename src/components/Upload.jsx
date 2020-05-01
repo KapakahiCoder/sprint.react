@@ -1,16 +1,27 @@
-import React from "react";
-// import _ from "lodash";
+import React, { useRef } from "react";
 import "../styles/upload.css";
 import { saveObject } from "../utils/index.js";
 
 export default function Upload() {
+  const file = useRef();
+
   return (
     <div className="file-upload">
-      <form>
-        <label for="myfile">Upload a picture!</label>
-        <input type="file" id="myfile"></input>
-        <button>Upload!</button>
-      </form>
+      <button
+        onClick={() => {
+          file.current.click();
+        }}
+      >
+        <input
+          ref={file}
+          type="file"
+          className={"input"}
+          accept="image/gif, image/jpeg, image/png"
+          onChange={event => {
+            saveObject(event.target.files[0]);
+          }}
+        ></input>
+      </button>
     </div>
   );
 }

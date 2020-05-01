@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-import _ from "lodash";
-import { getSingleObject } from "../utils/index.js";
+import React from "react";
 import "../styles/allphotos.css";
 
 export default function AllPhotos(props) {
@@ -11,6 +9,7 @@ export default function AllPhotos(props) {
       {props.photos.map((string, index) => (
         <img
           src={"data:image/jpeg;base64, " + string}
+          alt=""
           key={index}
           onClick={() => {
             console.log(index, string);

@@ -6,11 +6,11 @@ import SinglePhoto from "./SinglePhoto.jsx";
 import Upload from "./Upload.jsx";
 import { listObjects } from "../utils/index.js";
 import { getSingleObject } from "../utils/index.js";
-// import ReactDOM from "react-dom";
 
 export default function App() {
   const [currentView, setCurrentView] = useState("AllPhotos");
   const [photos, setPhotos] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [selectedPhotos, setSelectedPhotos] = useState("");
   const [singlePhoto, setSinglePhoto] = useState("");
 
