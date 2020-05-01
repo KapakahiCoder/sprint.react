@@ -3,10 +3,10 @@ import "../styles/styles.css";
 import Navbar from "./Navbar.jsx";
 import AllPhotos from "./AllPhotos.jsx";
 import SinglePhoto from "./SinglePhoto.jsx";
-import Upload from "./Upload.jsx";
+// import Upload from "./Upload.jsx";
 import { listObjects } from "../utils/index.js";
 import { getSingleObject } from "../utils/index.js";
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 
 export default function App() {
   const [currentView, setCurrentView] = useState("AllPhotos");
@@ -18,21 +18,37 @@ export default function App() {
   }
 
   //use effect with this function as callback before any component mounting
+
   async function getImages() {
-    let images = [];
-    const list = await listObjects();
+    const getObj = async () => {
+      let list = await listObjects();
+      return list;
+    };
 
-    for (let i = 0; i < 6; i++) {
-      if (list[i]) {
-        const data = await getSingleObject(list[i].Key);
-        const result = `data:image/jpg;base64,${data}`;
-
-        images.push(result);
+    const getKeys = async limit => {
+      const list = await getObj();
+      const keys = [];
+      for (let i = 0; i < limit; i++) {
+        keys.push(list[i].Key);
       }
-    }
-    setPhotos(images);
+      return keys;
+    };
+
+    const getUrls = async () => {
+      const urls = [];
+      const keys = await getKeys(6);
+      for (let i = 0; i < keys.length; i++) {
+        const string = await getSingleObject(keys[i]);
+        urls.push(string);
+      }
+      console.log("urls:", urls);
+      return urls;
+    };
+
+    return await getUrls();
   }
-  getImages();
+
+  console.log(getImages());
 
   return (
     <div className="app">
