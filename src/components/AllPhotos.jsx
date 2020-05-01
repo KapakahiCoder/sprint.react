@@ -8,6 +8,7 @@ export default function AllPhotos(props) {
     <div className="all-photos">
       {props.photos.map((string, index) => (
         <img
+          className="all-photos"
           src={"data:image/jpeg;base64, " + string}
           alt=""
           key={index}

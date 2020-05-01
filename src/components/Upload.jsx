@@ -8,6 +8,7 @@ export default function Upload() {
   return (
     <div className="file-upload">
       <button
+        className="button"
         onClick={() => {
           file.current.click();
         }}

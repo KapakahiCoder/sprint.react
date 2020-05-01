@@ -1,11 +1,18 @@
 .navbar {
-  padding: 2rem;
+  padding: 10px;
   display: flex;
-  justify-content: flex-end;
-  background-color: #1c7e88;
+  justify-content: center;
+  background-color: #031347;
 }
 
 .navbar-header {
   cursor: pointer;
   margin-right: auto;
+}
+
+h1 {
+  font-family: "Concert One", cursive;
+  color: #1ecceb;
+  justify-content: center;
+  font-size: 4em;
 }

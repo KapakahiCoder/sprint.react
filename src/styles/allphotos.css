@@ -1,5 +1,17 @@
 .all-photos {
-  border: 1px solid grey;
+  border: 3px solid black;
   border-radius: 5px;
-  padding: 25px;
+  padding: 0px;
+  margin: 10px;
+  max-height: 250px;
+  max-width: 300px;
+  display: grid;
+  /* make four columns of equal width (each is a "fraction") */
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.all-photos-container {
+  display: flex;
+  flex-direction: column;
 }
