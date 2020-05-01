@@ -1,9 +1,23 @@
-import React, { useEffect, useRef } from "react";
-// import _ from "lodash";
+import React, { useEffect } from "react";
+import _ from "lodash";
 import { getSingleObject } from "../utils/index.js";
-import { SinglePhoto } from "./SinglePhoto";
 import "../styles/allphotos.css";
 
 export default function AllPhotos(props) {
-  return <div className="all-photos"></div>;
+  console.log("props:", props);
+
+  return (
+    <div className="all-photos">
+      {props.photos.map((string, index) => (
+        <img
+          src={"data:image/jpeg;base64, " + string}
+          key={index}
+          onClick={() => {
+            console.log(index, string);
+            props.sendIndex(index, string);
+          }}
+        />
+      ))}
+    </div>
+  );
 }

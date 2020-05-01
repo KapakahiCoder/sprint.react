@@ -1,8 +1,5 @@
 .all-photos {
-  width: 85vw;
-  margin: 0 auto;
-  display: grid;
-  /* make four columns of equal width (each is a "fraction") */
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 20px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 25px;
 }
